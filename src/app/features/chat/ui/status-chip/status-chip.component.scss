@@ -1,0 +1,16 @@
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0;
+  color: #8e8e8e;
+  font-size: 0.875rem;
+
+  &__icon {
+    font-size: 0.75rem;
+  }
+
+  &__text {
+    font-style: italic;
+  }
+}

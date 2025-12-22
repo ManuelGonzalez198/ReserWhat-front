@@ -1,0 +1,10 @@
+<div 
+  class="message-bubble"
+  [class.message-bubble--user]="message().sender === 'user'"
+  [class.message-bubble--assistant]="message().sender === 'assistant'"
+>
+  @if (message().status) {
+    <app-status-chip [text]="message().status!" />
+  }
+  <p class="message-bubble__content">{{ message().content }}</p>
+</div>

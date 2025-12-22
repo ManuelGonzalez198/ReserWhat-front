@@ -1,0 +1,25 @@
+.message-bubble {
+  max-width: 70%;
+  padding: 0.75rem 1rem;
+  border-radius: 1.25rem;
+  margin-bottom: 0.5rem;
+
+  &--user {
+    background-color: #2f2f2f;
+    margin-left: auto;
+    border-bottom-right-radius: 0.25rem;
+  }
+
+  &--assistant {
+    background-color: transparent;
+    margin-right: auto;
+  }
+
+  &__content {
+    margin: 0;
+    color: #ffffff;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+  }
+}
