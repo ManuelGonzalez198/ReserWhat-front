@@ -1,0 +1,25 @@
+.chat-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  background-color: #212121;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+app-message-list {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.chat-page__composer {
+  position: sticky;
+  bottom: 0;
+  background-color: #212121;
+  padding: 1rem 2rem 2rem 2rem;
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+}

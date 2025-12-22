@@ -1,0 +1,6 @@
+<div class="chat-page">
+  <app-message-list [messages]="messages()" />
+  <div class="chat-page__composer">
+    <app-composer (send)="onSendMessage($event)" />
+  </div>
+</div>
