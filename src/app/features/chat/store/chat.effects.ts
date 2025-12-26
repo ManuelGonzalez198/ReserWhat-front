@@ -2,9 +2,9 @@ import { Injectable, inject } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { of } from 'rxjs';
-import { map, switchMap, catchError, tap } from 'rxjs/operators';
-import { ChatActions } from './chat.actions';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ChatApiService } from '../services/chat-api.service';
+import { ChatActions } from './chat.actions';
 
 @Injectable()
 export class ChatEffects {
@@ -29,12 +29,16 @@ export class ChatEffects {
                 content: response.response,
                 sender: 'assistant',
                 timestamp: new Date(),
-                status: response.status
-              }
+                status: response.status,
+              },
             })
           ),
           catchError((error) =>
-            of(ChatActions.receiveResponseFailure({ error: error.message || 'Error al enviar mensaje' }))
+            of(
+              ChatActions.receiveResponseFailure({
+                error: error.message || 'Error al enviar mensaje',
+              })
+            )
           )
         )
       )
@@ -49,7 +53,11 @@ export class ChatEffects {
         this.chatApi.getHistory().pipe(
           map((messages) => ChatActions.loadMessagesSuccess({ messages })),
           catchError((error) =>
-            of(ChatActions.loadMessagesFailure({ error: error.message || 'Error al cargar mensajes' }))
+            of(
+              ChatActions.loadMessagesFailure({
+                error: error.message || 'Error al cargar mensajes',
+              })
+            )
           )
         )
       )
