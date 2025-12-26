@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of, delay } from 'rxjs';
 import { Message } from '../../../shared/models/message.model';
@@ -13,7 +13,9 @@ export interface ChatResponse {
 })
 export class ChatApiService {
   private http = inject(HttpClient);
-  private apiUrl = 'http://localhost:3000/api'; // Ajustar según tu backend
+  private apiUrl = isDevMode() 
+    ? 'http://localhost:3000/api' 
+    : 'https://reserwhats.onrender.com/api';
 
   sendMessage(content: string): Observable<ChatResponse> {
     return this.http.post<ChatResponse>(`${this.apiUrl}/message`, { message: content });
